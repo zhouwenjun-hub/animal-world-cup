@@ -22,11 +22,9 @@ const STORAGE_KEY = "animalCupLocale";
 const LocaleContext = createContext({ locale: "en", setLocale: () => {}, t: (k) => k });
 
 export function LocaleProvider({ children }) {
-  // SSR-safe: render the default (en) on the server, switch after mount
-  // (avoids hydration mismatch). English is THE first language (owner
-  // 2026-06-12) — no browser-language sniffing; only an explicit choice
-  // made with the switcher (persisted) moves off en.
-  const [locale, setLocaleState] = useState("en");
+  // SSR-safe: render the default (zh) on the server, switch after mount
+  // (avoids hydration mismatch).
+  const [locale, setLocaleState] = useState("zh");
 
   useEffect(() => {
     const saved = localStorage.getItem(STORAGE_KEY);

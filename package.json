@@ -5,8 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "rm -rf .next && next dev -p 13000",
-    "lan": "node script/lan-server.mjs",
     "dev:lan": "rm -rf .next && node script/lan-dev.mjs",
+    "dev:online": "rm -rf .next && MODE=online node script/lan-dev.mjs",
+    "dev:server": "rm -rf .next && MODE=online node server.mjs",
+    "lan": "node script/lan-server.mjs",
     "prebuild": "rm -rf .next",
     "build": "node script/stamp-sw-version.mjs && node script/safe-build.mjs",
     "build:worker": "rm -rf .next .open-next && node script/stamp-sw-version.mjs && opennextjs-cloudflare build",

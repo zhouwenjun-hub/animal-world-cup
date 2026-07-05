@@ -40,7 +40,9 @@ export default function LobbyClient({ red, blue, side, ai, time }) {
       onMessage(msg) {
         if (msg.t === "hosted") {
           setRoom(msg.room);
-          const url = `http://${msg.ip}:${msg.port}/pad?room=${msg.room}`;
+          const url = msg.mode === "online"
+            ? `${window.location.origin}/pad?room=${msg.room}`
+            : `http://${msg.ip}:${msg.port}/pad?room=${msg.room}`;
           setJoin(url);
           QRCode.toDataURL(url, { margin: 1, width: 320, color: { dark: "#1d3d16", light: "#ffffff" } })
             .then(setQr)
